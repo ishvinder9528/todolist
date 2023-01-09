@@ -1,0 +1,11 @@
+<form onsubmit={{this.sumbit @model}}>  
+    <input type="text" value={{this.text}} onchange={{this.onChange}}/>
+    <button type="submit">Add To-Do</button>
+</form>
+<ol>
+    {{#each @model as |todo| }}
+    <li>
+        {{todo}}
+    </li>
+    {{/each}}
+</ol>
