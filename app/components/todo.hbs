@@ -1,11 +1,29 @@
-<form onsubmit={{this.sumbit @model}}>  
-    <input type="text" value={{this.text}} onchange={{this.onChange}}/>
-    <button type="submit">Add To-Do</button>
-</form>
+<div>
+    <input
+      type="text"
+      value={{this.text}}
+      {{on "change" this.onChange}}
+    />
+
+    <button
+      type="submit"
+      {{on "click" this.submit}}
+    >
+      Add To-Do
+    </button>
+</div>
+
 <ol>
-    {{#each @model as |todo| }}
-    <li>
-        {{todo}}
-    </li>
+    {{#each @model as |todo index|}}
+      <li>
+          {{todo}}
+
+          <button
+            type="button"
+            {{on "click" (fn this.deleteTodoByIndex index)}}
+          >
+            ×
+          </button>
+      </li>
     {{/each}}
 </ol>
